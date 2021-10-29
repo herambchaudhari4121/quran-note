@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <title>Quran Note</title>
 
@@ -21,16 +22,34 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>Daftar Surat</h1>
+        <h1 class="text-center">Daftar Surat</h1>
         {{-- <h6>${{ $surahs }}</h6> --}}
-        <table>
-            <tr>Nama Surat</tr>
-            {{-- <h2>{{ $surahs[number] }}</h2> --}}
-            @foreach ($surahs as $surah)
-                <td>
-                    {{ $surah[0] }}
-                </td>
-            @endforeach
-        </table>
+        <div class="container">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>Nomor</th>
+                    <th>Nama Surat</th>
+                    <th>Arti Surat</th>
+                    <th>Jumlah Ayat</th>
+                {{-- <h2>{{ $surahs['number'] }}</h2> --}}
+                @foreach ($surahs as $surah)
+                    <tr>
+                        <td>
+                            {{ $surah['number'] }}
+                        </td>
+                        <td>
+                            {{ $surah['name']['short'] }}
+                            {{ $surah['name']['transliteration']['id'] }}
+                        </td>
+                        <td>
+                            {{ $surah['name']['translation']['id'] }}
+                        </td>
+                        <td>
+                            {{ $surah['numberOfVerses'] }} ayat
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
     </body>
 </html>
