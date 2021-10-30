@@ -9,6 +9,10 @@
         <div class="card-body text-center">
             <h5 class="card-title">{{ $verses['text']['arab'] }}</h5>
             <p class="card-text">{{ $verses['translation']['id'] }}</p>
+            <audio controls>
+                <source src="{{ $verses['audio']['primary'] }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
     </div>
     <div class="card mb-3">
