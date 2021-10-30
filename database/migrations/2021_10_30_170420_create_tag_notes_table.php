@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotesTable extends Migration
+class CreateTagNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function (Blueprint $table) {
+        Schema::create('tag_notes', function (Blueprint $table) {
             $table->id();
-            $table->integer('surat');
-            $table->integer('ayat');
-            $table->longText('note');
-            $table->foreignId('user_id');
-            $table->enum('status_note', ['private', 'public']);
+            $table->foreignId('tag_id');
+            $table->foreignId('note_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('tag_notes');
     }
 }
