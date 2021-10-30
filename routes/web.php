@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\NoteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('surat/{surat}/{ayat}', [DashboardController::class, 'surat'])->name('surat');
 Route::resource('tag', TagController::class);
+Route::resource('note', NoteController::class);
