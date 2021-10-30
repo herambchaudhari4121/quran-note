@@ -31,24 +31,27 @@
                     <th>Nama Surat</th>
                     <th>Arti Surat</th>
                     <th>Jumlah Ayat</th>
-                {{-- <h2>{{ $surahs['number'] }}</h2> --}}
-                @foreach ($surahs as $surah)
-                    <tr>
-                        <td>
-                            {{ $surah['number'] }}
-                        </td>
-                        <td>
-                            {{ $surah['name']['short'] }}
-                            {{ $surah['name']['transliteration']['id'] }}
-                        </td>
-                        <td>
-                            {{ $surah['name']['translation']['id'] }}
-                        </td>
-                        <td>
-                            {{ $surah['numberOfVerses'] }} ayat
-                        </td>
-                    </tr>
-                @endforeach
+                    <th>View</th>
+                    @foreach ($surahs as $surah)
+                        <tr>
+                            <td>
+                                {{ $surah['number'] }}
+                            </td>
+                            <td>
+                                {{ $surah['name']['short'] }}
+                                {{ $surah['name']['transliteration']['id'] }}
+                            </td>
+                            <td>
+                                {{ $surah['name']['translation']['id'] }}
+                            </td>
+                            <td>
+                                {{ $surah['numberOfVerses'] }} ayat
+                            </td>
+                            <td>
+                                <a href="{{ route('surat', $surah['number']) }}">Detail</a>
+                            </td>
+                        </tr>
+                    @endforeach
             </table>
         </div>
     </body>
