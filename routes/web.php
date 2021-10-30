@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('surat/{surat}', [DashboardController::class, 'surat'])->name('surat');
