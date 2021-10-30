@@ -22,37 +22,28 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1 class="text-center">Daftar Surat</h1>
-        {{-- <h6>${{ $surahs }}</h6> --}}
-        <div class="container">
-            <table class="table table-striped table-hover">
-                <tr>
-                    <th>Nomor</th>
-                    <th>Nama Surat</th>
-                    <th>Arti Surat</th>
-                    <th>Jumlah Ayat</th>
-                    <th>View</th>
-                    @foreach ($surahs as $surah)
-                        <tr>
-                            <td>
-                                {{ $surah['number'] }}
-                            </td>
-                            <td>
-                                {{ $surah['name']['short'] }}
-                                {{ $surah['name']['transliteration']['id'] }}
-                            </td>
-                            <td>
-                                {{ $surah['name']['translation']['id'] }}
-                            </td>
-                            <td>
-                                {{ $surah['numberOfVerses'] }} ayat
-                            </td>
-                            <td>
-                                <a href="{{ route('surat', [$surah['number'], 0]) }}">Detail</a>
-                            </td>
-                        </tr>
-                    @endforeach
-            </table>
+        <div class="container mt-3">
+            <div class="text-center">
+                <a href="{{ route('surat', [$verses['surah']['number'], 0]) }}" class="btn btn-warning btn-lg mb-3"><< Kembali ke QS. {{ $verses['surah']['name']['transliteration']['id'] }}</a>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header text-white bg-success text-center">QS. {{ $verses['surah']['name']['transliteration']['id'] }} [{{ $verses['surah']['number'] }}] ayat {{ $verses['number']['inSurah'] }}</div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ $verses['text']['arab'] }}</h5>
+                    <p class="card-text">{{ $verses['translation']['id'] }}</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header text-white bg-success text-center">Tafsir</div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ $verses['text']['arab'] }}</h5>
+                    <p class="card-text">{{ $verses['tafsir']['id']['short'] }}</p>
+                    <p class="card-text">{{ $verses['tafsir']['id']['long'] }}</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="{{ route('surat', [$verses['surah']['number'], 0]) }}" class="btn btn-warning btn-lg mb-3"><< Kembali ke QS. {{ $verses['surah']['name']['transliteration']['id'] }}</a>
+            </div>
         </div>
     </body>
 </html>
