@@ -16,7 +16,11 @@
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $verse['text']['arab'] }}</h5>
                 <p class="card-text">{{ $verse['translation']['id'] }}</p>
-                <a href="{{ route('surat', [$surahs['number'], $verse['number']['inSurah']]) }}" class="btn btn-warning">Tafsir >></a>
+                <audio controls class="mb-3">
+                    <source src="{{ $verse['audio']['primary'] }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p><a href="{{ route('surat', [$surahs['number'], $verse['number']['inSurah']]) }}" class="btn btn-warning">Tafsir >></a></p>
             </div>
         </div>
     @endforeach
