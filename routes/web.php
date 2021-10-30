@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/', function() {
+    if(!is_null(Auth::user())) {
+        return redirect(route('dashboard'));
+    } else {
+        return view('auth.login');
+    }
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('surat/{surat}', [DashboardController::class, 'surat'])->name('surat');
-
